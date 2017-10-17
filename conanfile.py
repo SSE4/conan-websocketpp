@@ -6,12 +6,15 @@ class WebsocketPPConan(ConanFile):
     url = "https://github.com/bincrafters/conan-websocketpp"
     description = "Header only C++ library that implements RFC6455 The WebSocket Protocol"
     license = "https://github.com/zaphoyd/websocketpp/blob/master/COPYING"
-    requires =  "OpenSSL/1.0.2l@conan/stable", \
-            "zlib/1.2.8@conan/stable", \
-            "Boost.Random/1.64.0@bincrafters/testing", \
-            "Boost.System/1.64.0@bincrafters/testing", \
-            "Boost.Thread/1.64.0@bincrafters/testing", \
-            "Boost.Asio/1.64.0@bincrafters/testing", \
+
+    def requirements(self):
+        self.requires.add("OpenSSL/1.0.2l@conan/stable")
+        self.requires.add("zlib/1.2.11@conan/stable")
+        self.requires.add("Boost.Random/[>1.64.0]@%s/%s" % (self.user, self.channel))
+        self.requires.add("Boost.Random/[>1.64.0]@%s/%s" % (self.user, self.channel))
+        self.requires.add("Boost.System/[>1.64.0]@%s/%s" % (self.user, self.channel))
+        self.requires.add("Boost.Thread/[>1.64.0]@%s/%s" % (self.user, self.channel))
+        self.requires.add("Boost.Asio/[>1.64.0]@%s/%s" % (self.user, self.channel))
                       
     def source(self):
         source_url = "https://github.com/zaphoyd/websocketpp"
